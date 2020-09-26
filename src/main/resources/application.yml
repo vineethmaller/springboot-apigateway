@@ -1,18 +1,21 @@
 ---
 spring:
-  profiles: dev
+  profiles: peer1
   application: 
     name: api_gateway
 server:
   port: 8085
 
-
 eureka:
-  instance:
-    hostname: ${spring.application.name}-${server.port}
   client:
-    register-with-eureka: true
-    fetch-registry: true
-    serviceUrl:
-      defaultZone: http://localhost:8081/eureka/
+    enabled: false
+  
+zuul:
+  routes:
+    ws_user:
+      url: http://localhost:8080/
+      path: /ws_user/**
       
+ribbon:
+  eureka:
+    enabled: ${eureka.client.enabled}      
