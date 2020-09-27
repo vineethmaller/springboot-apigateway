@@ -1,6 +1,6 @@
 ---
 spring:
-  profiles: peer1
+  profiles: default
   application: 
     name: api_gateway
 server:
