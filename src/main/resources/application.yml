@@ -8,14 +8,17 @@ server:
 
 eureka:
   client:
-    enabled: false
+    enabled: ${EUREKA_CLIENT_ENABLED}
+
+
+ribbon:
+  eureka:
+    enabled: ${eureka.client.enabled}    
   
 zuul:
   routes:
     ws_user:
       url: http://localhost:8080/
       path: /ws_user/**
+
       
-ribbon:
-  eureka:
-    enabled: ${eureka.client.enabled}      
